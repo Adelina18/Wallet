@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="WalletFinancialApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,93 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNg-ee-sld">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fingerprint needed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfk-TG-5df">
+                                        <rect key="frame" x="70" y="560" width="235" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="WHT-rx-9dk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="1" green="0.82150484079999997" blue="0.38733659710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cash-icon" translatesAutoresizingMaskIntoConstraints="NO" id="KNj-IN-039">
+                                        <rect key="frame" x="24" y="238" width="327" height="191"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="191" id="HXU-3w-Kbc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOd-Er-PjQ">
+                                        <rect key="frame" x="29" y="122" width="317" height="108"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="108" id="czZ-Ue-KwD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                        <color key="textColor" red="0.31483626767973366" green="0.74888681994818651" blue="0.14209071177846472" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dfk-TG-5df" secondAttribute="bottom" constant="60" id="8Gi-gG-yvU"/>
+                                    <constraint firstItem="cOd-Er-PjQ" firstAttribute="top" secondItem="eNg-ee-sld" secondAttribute="top" constant="122" id="Byd-6u-2qO"/>
+                                    <constraint firstItem="dfk-TG-5df" firstAttribute="leading" secondItem="eNg-ee-sld" secondAttribute="leading" constant="70" id="Lm2-x4-fmA"/>
+                                    <constraint firstAttribute="trailing" secondItem="cOd-Er-PjQ" secondAttribute="trailing" constant="29" id="THE-Pb-RwE"/>
+                                    <constraint firstItem="cOd-Er-PjQ" firstAttribute="leading" secondItem="eNg-ee-sld" secondAttribute="leading" constant="29" id="Y2X-hH-AxE"/>
+                                    <constraint firstAttribute="trailing" secondItem="KNj-IN-039" secondAttribute="trailing" constant="24" id="fFP-ew-uiO"/>
+                                    <constraint firstAttribute="trailing" secondItem="dfk-TG-5df" secondAttribute="trailing" constant="70" id="tuf-Zt-doQ"/>
+                                    <constraint firstItem="KNj-IN-039" firstAttribute="leading" secondItem="eNg-ee-sld" secondAttribute="leading" constant="24" id="wwv-R8-JDO"/>
+                                    <constraint firstItem="KNj-IN-039" firstAttribute="top" secondItem="cOd-Er-PjQ" secondAttribute="bottom" constant="8" id="xGZ-Sf-dVd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eNg-ee-sld" secondAttribute="trailing" id="4fV-ZF-t6l"/>
+                            <constraint firstItem="eNg-ee-sld" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Tap-m6-Zrf"/>
+                            <constraint firstItem="eNg-ee-sld" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b0P-qG-c2w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eNg-ee-sld" secondAttribute="bottom" id="guC-6C-2rm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginMessage" destination="dfk-TG-5df" id="y62-9c-wRS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="136.28185907046478"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="0h8-4n-iOH">
+            <objects>
+                <viewController id="sYl-u3-RRH" customClass="DashboardViewController" customModule="WalletFinancialApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jpY-sh-bF0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sj5-Y1-vlE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a8a-cv-Izk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-fG-zZJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pH-rG-8ec" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="135.38230884557723"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cash-icon" width="256" height="256"/>
+    </resources>
 </document>
