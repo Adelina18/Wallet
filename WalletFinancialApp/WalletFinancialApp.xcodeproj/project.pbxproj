@@ -17,6 +17,9 @@
 		84EFC7BC1F206E1C00860A6F /* WalletFinancialAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7BB1F206E1C00860A6F /* WalletFinancialAppUITests.swift */; };
 		84EFC7CF1F21975500860A6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7CE1F21975500860A6F /* MainViewController.swift */; };
 		84EFC7D11F23F0A600860A6F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */; };
+		84EFC7D31F24031700860A6F /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7D21F24031700860A6F /* ListTableViewCell.swift */; };
+		84EFC7D51F24142000860A6F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7D41F24142000860A6F /* ListViewController.swift */; };
+		84EFC7D81F24189500860A6F /* AddIncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7D71F24189500860A6F /* AddIncomeExpense.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		84EFC7BD1F206E1C00860A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84EFC7CE1F21975500860A6F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		84EFC7D21F24031700860A6F /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		84EFC7D41F24142000860A6F /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		84EFC7D71F24189500860A6F /* AddIncomeExpense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIncomeExpense.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +109,10 @@
 		84EFC7971F206E1C00860A6F /* WalletFinancialApp */ = {
 			isa = PBXGroup;
 			children = (
+				84EFC7D61F24186B00860A6F /* View */,
 				84EFC7CD1F218F9400860A6F /* ViewControllers */,
 				84EFC7981F206E1C00860A6F /* AppDelegate.swift */,
+				84EFC7D21F24031700860A6F /* ListTableViewCell.swift */,
 				84EFC79C1F206E1C00860A6F /* Main.storyboard */,
 				84EFC7A21F206E1C00860A6F /* Assets.xcassets */,
 				84EFC7A41F206E1C00860A6F /* LaunchScreen.storyboard */,
@@ -138,8 +146,17 @@
 				84EFC79A1F206E1C00860A6F /* LoginViewController.swift */,
 				84EFC7CE1F21975500860A6F /* MainViewController.swift */,
 				84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */,
+				84EFC7D41F24142000860A6F /* ListViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84EFC7D61F24186B00860A6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84EFC7D71F24189500860A6F /* AddIncomeExpense.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +301,9 @@
 				84EFC7D11F23F0A600860A6F /* DashboardViewController.swift in Sources */,
 				84EFC7A11F206E1C00860A6F /* WalletFinancialApp.xcdatamodeld in Sources */,
 				84EFC7CF1F21975500860A6F /* MainViewController.swift in Sources */,
+				84EFC7D81F24189500860A6F /* AddIncomeExpense.swift in Sources */,
+				84EFC7D31F24031700860A6F /* ListTableViewCell.swift in Sources */,
+				84EFC7D51F24142000860A6F /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
