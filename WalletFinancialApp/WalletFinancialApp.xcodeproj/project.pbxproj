@@ -16,6 +16,7 @@
 		84EFC7B11F206E1C00860A6F /* WalletFinancialAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7B01F206E1C00860A6F /* WalletFinancialAppTests.swift */; };
 		84EFC7BC1F206E1C00860A6F /* WalletFinancialAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7BB1F206E1C00860A6F /* WalletFinancialAppUITests.swift */; };
 		84EFC7CF1F21975500860A6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7CE1F21975500860A6F /* MainViewController.swift */; };
+		84EFC7D11F23F0A600860A6F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		84EFC7BB1F206E1C00860A6F /* WalletFinancialAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletFinancialAppUITests.swift; sourceTree = "<group>"; };
 		84EFC7BD1F206E1C00860A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84EFC7CE1F21975500860A6F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				84EFC79A1F206E1C00860A6F /* LoginViewController.swift */,
 				84EFC7CE1F21975500860A6F /* MainViewController.swift */,
+				84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				84EFC79B1F206E1C00860A6F /* LoginViewController.swift in Sources */,
 				84EFC7991F206E1C00860A6F /* AppDelegate.swift in Sources */,
+				84EFC7D11F23F0A600860A6F /* DashboardViewController.swift in Sources */,
 				84EFC7A11F206E1C00860A6F /* WalletFinancialApp.xcdatamodeld in Sources */,
 				84EFC7CF1F21975500860A6F /* MainViewController.swift in Sources */,
 			);

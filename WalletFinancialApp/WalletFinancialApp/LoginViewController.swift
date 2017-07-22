@@ -49,7 +49,15 @@ class LoginViewController: UIViewController {
         
         //Touch ID can be used
         loginMessage.text = kMsgShowFinger
-        loginProcess(policy: policy!)
+        
+        
+        //REMOVED FOR TESTING
+        //loginProcess(policy: policy!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //ADDED FOR TESTING
+        goToDashboard()
     }
     
     private func loginProcess(policy: LAPolicy) {
