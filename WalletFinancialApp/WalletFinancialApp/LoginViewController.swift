@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 self.loginMessage.text = self.kMsgSuccess
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.goToDashboard()
                 }
             }
@@ -110,7 +110,9 @@ class LoginViewController: UIViewController {
     }
     
     func goToDashboard() {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MainView")
+        self.present(controller, animated: false, completion: nil)
     }
 
 }

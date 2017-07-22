@@ -78,35 +78,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="136.28185907046478"/>
+            <point key="canvasLocation" x="-42" y="135"/>
         </scene>
-        <!--Dashboard View Controller-->
-        <scene sceneID="0h8-4n-iOH">
+        <!--Item 2-->
+        <scene sceneID="vlV-ml-eYx">
             <objects>
-                <viewController id="sYl-u3-RRH" customClass="DashboardViewController" customModule="WalletFinancialApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LJP-bK-tZ4" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jpY-sh-bF0"/>
-                        <viewControllerLayoutGuide type="bottom" id="Sj5-Y1-vlE"/>
+                        <viewControllerLayoutGuide type="top" id="NWW-wL-HD1"/>
+                        <viewControllerLayoutGuide type="bottom" id="M07-U2-Wi2"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="a8a-cv-Izk">
+                    <view key="view" contentMode="scaleToFill" id="IJp-te-AXw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8c-fG-zZJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.74544608160000003" green="0.1116694636" blue="0.0074790375199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="dSQ-kV-7nN"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1pH-rG-8ec" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvD-xE-MnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="135.38230884557723"/>
+            <point key="canvasLocation" x="1358" y="134"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Rte-Df-xzB">
+            <objects>
+                <viewController id="02s-cU-m4Y" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NJR-Yy-gj2"/>
+                        <viewControllerLayoutGuide type="bottom" id="jMO-9v-1gQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ejP-Hm-jcl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.82150484079999997" blue="0.38733659710000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="KCt-YT-uo2"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nXd-Ik-4OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="844"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="U9C-PB-oJv">
+            <objects>
+                <viewController id="JKO-ix-xM5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rRa-aS-Kji"/>
+                        <viewControllerLayoutGuide type="bottom" id="YqJ-71-d4S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eKW-KE-x4v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.31483626770000001" green="0.74888681989999994" blue="0.14209071179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="xqi-vT-Rs1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLE-x3-foK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="-591"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="F5x-3G-0m4">
+            <objects>
+                <tabBarController storyboardIdentifier="MainView" id="7AY-8Q-upl" customClass="MainViewController" customModule="WalletFinancialApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="hLu-rb-6XZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="JKO-ix-xM5" kind="relationship" relationship="viewControllers" id="ong-nh-hJd"/>
+                        <segue destination="LJP-bK-tZ4" kind="relationship" relationship="viewControllers" id="Clb-II-288"/>
+                        <segue destination="02s-cU-m4Y" kind="relationship" relationship="viewControllers" id="JKY-8O-ggd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8S-2D-fki" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="134"/>
         </scene>
     </scenes>
     <resources>
         <image name="cash-icon" width="256" height="256"/>
     </resources>
+    <color key="tintColor" red="0.31483626770000001" green="0.74888681989999994" blue="0.14209071179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.swift
+//  MainViewController.swift
 //  WalletFinancialApp
 //
 //  Created by Admin on 7/20/17.
@@ -8,14 +8,17 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
