@@ -54,7 +54,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableViewCell {
-            cell.amount.text = "100"
+            cell.amount.text = "100"//test
             return cell
         } else {
             return ListTableViewCell()
@@ -64,9 +64,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func setupFormView() {
         form = Bundle.main.loadNibNamed("FormView", owner: nil, options: nil)?.first as? FormView
         form?.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
-        form?.layer.borderColor = UIColor.white.cgColor
-        form?.layer.borderWidth = 2
-        form?.layer.cornerRadius = 20
+        form?.layer.borderColor = Configuration.sharedInstance.borderColor().cgColor
+        form?.layer.borderWidth = Configuration.sharedInstance.borderWidth()
+        form?.layer.cornerRadius = Configuration.sharedInstance.cornerRadius()
         
         form?.delegate = self
     }

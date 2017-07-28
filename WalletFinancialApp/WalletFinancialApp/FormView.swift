@@ -45,19 +45,19 @@ class FormView: UIView, UITextFieldDelegate {
     }
     
     func setupView() {
-        saveButton.layer.borderWidth = 2
-        saveButton.layer.borderColor = UIColor.white.cgColor
+        saveButton.layer.borderWidth = Configuration.sharedInstance.borderWidth()
+        saveButton.layer.borderColor = Configuration.sharedInstance.borderColor().cgColor
         
-        cancelButton.layer.borderWidth = 2
-        cancelButton.layer.borderColor = UIColor.white.cgColor
+        cancelButton.layer.borderWidth = Configuration.sharedInstance.borderWidth()
+        cancelButton.layer.borderColor = Configuration.sharedInstance.borderColor().cgColor
         
         amountTextField.delegate = self
         titleTextField.delegate = self
         detailsTextField.delegate = self
         
-        amountTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-        titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-        detailsTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+        amountTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.textFieldInset(), 0, 0);
+        titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.textFieldInset(), 0, 0);
+        detailsTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.textFieldInset(), 0, 0);
         
         amountTextField.attributedPlaceholder = NSAttributedString(string: "Amount",
                                                                attributes: [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7)])
