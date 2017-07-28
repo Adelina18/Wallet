@@ -120,7 +120,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i3U-fM-Hwe" id="MMI-er-qYs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1h-Lf-TZ5">
@@ -197,7 +197,7 @@
                                     <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addIncomePressed:" destination="LJP-bK-tZ4" eventType="touchUpInside" id="R7d-Wk-dEp"/>
+                                    <action selector="addIncomePressed:" destination="LJP-bK-tZ4" eventType="touchUpInside" id="vHE-bN-tUx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACb-MX-aUs">
@@ -236,7 +236,7 @@
                     <tabBarItem key="tabBarItem" title="List" id="dSQ-kV-7nN"/>
                     <connections>
                         <outlet property="addExpense" destination="ACb-MX-aUs" id="wdx-qX-gGN"/>
-                        <outlet property="addIncome" destination="HUl-Om-KXB" id="E8c-21-9p4"/>
+                        <outlet property="addIncome" destination="HUl-Om-KXB" id="Ajd-4V-7Lq"/>
                         <outlet property="tableView" destination="ZEk-Aa-eij" id="SaD-dl-zIP"/>
                     </connections>
                 </viewController>

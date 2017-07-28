@@ -12,6 +12,9 @@ class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let test = UIView(frame: CGRect(x: 10, y: 10, width: 200, height: 200))
+        self.view.addSubview(test)
 
         // Do any additional setup after loading the view.
     }

@@ -15,27 +15,31 @@ enum AddFormType {
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addIncome: UIButton!
     @IBOutlet weak var addExpense: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var form: FormView? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        setupFormView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func addIncomePressed(_ sender: Any) {
-        setupAddFormWithType(type: .AddTypeIncome)
-    }
-    
     @IBAction func addExpensePressed(_ sender: Any) {
         setupAddFormWithType(type: .AddTypeExpense)
+    }
+    
+    @IBAction func addIncomePressed(_ sender: Any) {
+        setupAddFormWithType(type: .AddTypeIncome)
     }
     
     // MARK: Table View
@@ -57,22 +61,33 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func setupFormView() {
+        form = Bundle.main.loadNibNamed("FormView", owner: nil, options: nil)?.first as? FormView
+        form?.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+        form?.layer.borderColor = UIColor.white.cgColor
+        form?.layer.borderWidth = 2
+        form?.layer.cornerRadius = 20
+        
+        form?.delegate = self
+    }
+    
     func setupAddFormWithType(type: AddFormType) {
-        let form = AddIncomeExpense()
-        form.frame = CGRect.init(x: 20,
-                                 y: 90,
-                                 width: UIScreen.main.bounds.size.width - 40,
-                                 height: UIScreen.main.bounds.size.height - 110)
+        self.view.addSubview(form!)
         
         if type == .AddTypeExpense {
-            
+            form?.setType(type: .AddTypeExpense)
         }
         
         if type == .AddTypeIncome {
-            
+            form?.setType(type: .AddTypeIncome)
         }
-        
-        self.view.addSubview(form)
     }
+}
 
+extension ListViewController: FormViewDelegate {
+    
+    func didCancel() {
+        form?.removeFromSuperview()
+    }
+    
 }
