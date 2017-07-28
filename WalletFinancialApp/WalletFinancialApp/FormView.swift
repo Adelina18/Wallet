@@ -23,6 +23,7 @@ class FormView: UIView, UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailsTextField: UITextField!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var dropdown: UIView!
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         saveObject()
@@ -73,10 +74,14 @@ class FormView: UIView, UITextFieldDelegate {
         
         if type == .AddTypeExpense {
             formTypeLabel.text = "Expense"
+            categoryButton.isHidden = false
+            dropdown.isHidden = false
         }
         
         if type == .AddTypeIncome {
             formTypeLabel.text = "Income"
+            categoryButton.isHidden = true
+            dropdown.isHidden = true
         }
     }
     
@@ -85,8 +90,11 @@ class FormView: UIView, UITextFieldDelegate {
     }
     
     // MARK: textfields
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+    
+    
 
 }
