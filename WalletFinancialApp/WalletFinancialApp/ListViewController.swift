@@ -42,25 +42,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupAddFormWithType(type: .AddTypeIncome)
     }
     
-    // MARK: Table View
-    func numberOfSections(in tableView: UITableView) -> Int {
-        //number on months
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableViewCell {
-            cell.amount.text = "100"//test
-            return cell
-        } else {
-            return ListTableViewCell()
-        }
-    }
-    
     func setupFormView() {
         form = Bundle.main.loadNibNamed("FormView", owner: nil, options: nil)?.first as? FormView
         form?.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
@@ -82,7 +63,31 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             form?.setType(type: .AddTypeIncome)
         }
     }
+    
+    
+    // MARK: Table View
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        //number on months
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableViewCell {
+            cell.amount.text = "100"//test
+            return cell
+        } else {
+            return ListTableViewCell()
+        }
+    }
 }
+
+
+// MARK: delegates
 
 extension ListViewController: FormViewDelegate {
     

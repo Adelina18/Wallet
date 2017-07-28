@@ -11,10 +11,13 @@ import UIKit
 class Configuration: NSObject {
     
     static let kBorderWidth = 2
-    static let kTextFieldInset = 10
+    static let kInset = 10
     static let kCornerRadius = 20
+    static let kNewCategoryFormHeight = 50
+    static let kButtonWidth = 30
     
     static let kBorderColor = UIColor.white
+    static let kBackgroundColor = UIColor.black
     
     static let sharedInstance = Configuration()
     
@@ -22,16 +25,28 @@ class Configuration: NSObject {
         return CGFloat(Configuration.kBorderWidth)
     }
     
-    func textFieldInset() -> CGFloat {
-        return CGFloat(Configuration.kTextFieldInset)
+    func inset() -> CGFloat {
+        return CGFloat(Configuration.kInset)
     }
     
     func cornerRadius() -> CGFloat {
         return CGFloat(Configuration.kCornerRadius)
     }
     
+    func newCategoryFormHeight() -> CGFloat {
+        return CGFloat(Configuration.kNewCategoryFormHeight)
+    }
+    
+    func buttonWidth() -> CGFloat {
+        return CGFloat(Configuration.kButtonWidth)
+    }
+    
     func borderColor() -> UIColor {
         return Configuration.kBorderColor
+    }
+    
+    func backgroundColor() -> UIColor {
+        return Configuration.kBackgroundColor
     }
 
 }

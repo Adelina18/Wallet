@@ -56,9 +56,9 @@ class FormView: UIView, UITextFieldDelegate {
         titleTextField.delegate = self
         detailsTextField.delegate = self
         
-        amountTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.textFieldInset(), 0, 0);
-        titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.textFieldInset(), 0, 0);
-        detailsTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.textFieldInset(), 0, 0);
+        amountTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.inset(), 0, 0);
+        titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.inset(), 0, 0);
+        detailsTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.inset(), 0, 0);
         
         amountTextField.attributedPlaceholder = NSAttributedString(string: "Amount",
                                                                attributes: [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7)])
