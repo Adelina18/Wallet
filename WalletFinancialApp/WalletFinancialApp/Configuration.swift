@@ -17,6 +17,7 @@ class Configuration: NSObject {
     static let kButtonWidth = 30
     
     static let kBorderColor = UIColor.white
+    static let kTextColor = UIColor.white
     static let kBackgroundColor = UIColor.black
     
     static let sharedInstance = Configuration()
@@ -43,6 +44,10 @@ class Configuration: NSObject {
     
     func borderColor() -> UIColor {
         return Configuration.kBorderColor
+    }
+    
+    func textColor() -> UIColor {
+        return Configuration.kTextColor
     }
     
     func backgroundColor() -> UIColor {

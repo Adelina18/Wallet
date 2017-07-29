@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
-class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     var formMovedUp = false
     
     var form: UIView? = nil
+    var nameTextField: UITextField? = nil
     var categories: NSMutableArray? = nil
+    
+    var fetchedResultsController: NSFetchedResultsController<Category>!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newCategoryButton: UIButton!
@@ -24,6 +28,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         
+        fetch()
         setupNewCategoryForm()
     }
 
@@ -55,14 +60,15 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         form?.layer.borderColor = Configuration.sharedInstance.borderColor().cgColor
         form?.layer.cornerRadius = Configuration.sharedInstance.cornerRadius()
         
-        let textField = UITextField.init(frame: CGRect.init(x: inset,
+        nameTextField = UITextField.init(frame: CGRect.init(x: inset,
                                                             y: inset,
                                                             width: 200,
                                                             height: formHeight - 2 * inset))
-        textField.attributedPlaceholder = NSAttributedString(string: "Category",
+        nameTextField?.attributedPlaceholder = NSAttributedString(string: "Category",
                                                              attributes: [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7)])
-        textField.backgroundColor = Configuration.sharedInstance.backgroundColor()
-        textField.delegate = self
+        nameTextField?.backgroundColor = Configuration.sharedInstance.backgroundColor()
+        nameTextField?.textColor = Configuration.sharedInstance.textColor()
+        nameTextField?.delegate = self
         
         let cancelButton = UIButton.init(frame: CGRect.init(x: formWidth - inset - buttonWidth,
                                                   y: inset,
@@ -70,7 +76,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                                                   height: buttonWidth))
         cancelButton.addTarget(self, action:#selector(cancelButtonPressed), for: .touchUpInside)
         cancelButton.layer.cornerRadius = buttonWidth / 2
-        cancelButton.backgroundColor = UIColor.green
+        cancelButton.backgroundColor = UIColor.red
         
         let okButton = UIButton.init(frame: CGRect.init(x: formWidth - 2 * inset - 2 * buttonWidth,
                                                         y: inset,
@@ -78,9 +84,9 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                                                         height: buttonWidth))
         okButton.addTarget(self, action:#selector(okButtonPressed), for: .touchUpInside)
         okButton.layer.cornerRadius = buttonWidth / 2
-        okButton.backgroundColor = UIColor.red
+        okButton.backgroundColor = UIColor.green
         
-        form?.addSubview(textField)
+        form?.addSubview(nameTextField!)
         form?.addSubview(okButton)
         form?.addSubview(cancelButton)
     }
@@ -91,8 +97,13 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func okButtonPressed() {
-        //save category
-        
+        if (nameTextField?.text?.characters.count)! > 0 {
+            let category = Category(context: context)
+            category.id = Int64(NSDate().timeIntervalSince1970)
+            category.name = nameTextField?.text
+            
+            appDelegate.saveContext()
+        }
         moveForm()
         form?.removeFromSuperview()
     }
@@ -119,22 +130,98 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if categories != nil {
-            return (categories?.count)!
-        } else {
-            return 0
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
         }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as? CategoryTableViewCell {
-            return cell
-        } else {
-            return CategoryTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+        configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+        return cell
+    }
+    
+    func configureCell(cell: CategoryTableViewCell, indexPath: NSIndexPath) {
+        let category = fetchedResultsController.object(at: indexPath as IndexPath)
+        cell.configureCell(categ: category)
+    }
+    
+    
+    // MARK: Core Data
+    
+    func fetch() {
+        let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        
+        //sort categories by name
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                    managedObjectContext: context,
+                                                    sectionNameKeyPath: nil,
+                                                    cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            let error = error as NSError
+            print("Error: \(error)")
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            //created new category
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+            
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+            
+        case .update:
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
+                configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+            }
+            break
+            
+        case .move:
+            //cell dragging
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
         }
     }
     

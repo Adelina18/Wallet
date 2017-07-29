@@ -15,9 +15,15 @@ class CategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var deleteButton: UIButton!
 
     @IBAction func editButtonPressed(_ sender: Any) {
+        
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        
+    }
+    
+    func configureCell(categ: Category) {
+        category.text = categ.name
     }
     
     override func awakeFromNib() {

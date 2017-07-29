@@ -103,6 +103,14 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		8496FCE21F2BFE940086B2F5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				84EFC79F1F206E1C00860A6F /* WalletFinancialApp.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		84EFC78C1F206E1C00860A6F = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +134,7 @@
 		84EFC7971F206E1C00860A6F /* WalletFinancialApp */ = {
 			isa = PBXGroup;
 			children = (
+				8496FCE21F2BFE940086B2F5 /* CoreData */,
 				8496FCD11F2BCC3F0086B2F5 /* Cells */,
 				84EFC7D91F241C0700860A6F /* Storyboards */,
 				84EFC7D61F24186B00860A6F /* View */,
@@ -133,7 +142,6 @@
 				84EFC7981F206E1C00860A6F /* AppDelegate.swift */,
 				84EFC7A21F206E1C00860A6F /* Assets.xcassets */,
 				84EFC7A71F206E1C00860A6F /* Info.plist */,
-				84EFC79F1F206E1C00860A6F /* WalletFinancialApp.xcdatamodeld */,
 				841A0C071F2AF44000548EFF /* Configuration.swift */,
 			);
 			path = WalletFinancialApp;
