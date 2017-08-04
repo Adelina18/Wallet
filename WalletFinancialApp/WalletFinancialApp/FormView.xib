@@ -67,9 +67,8 @@
                         <action selector="categoryButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="3L6-8m-Chq"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPB-p9-LsI">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPB-p9-LsI">
                     <rect key="frame" x="24" y="294" width="292" height="145"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="145" id="bkz-ug-keD"/>
                     </constraints>

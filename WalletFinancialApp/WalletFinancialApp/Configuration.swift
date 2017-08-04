@@ -14,6 +14,7 @@ class Configuration: NSObject {
     static let kInset = 10
     static let kCornerRadius = 20
     static let kNewCategoryFormHeight = 50
+    static let kCategoryHeight = 30
     static let kButtonWidth = 30
     
     static let kBorderColor = UIColor.white
@@ -32,6 +33,10 @@ class Configuration: NSObject {
     
     func cornerRadius() -> CGFloat {
         return CGFloat(Configuration.kCornerRadius)
+    }
+    
+    func categoryHeight() -> CGFloat {
+        return CGFloat(Configuration.kCategoryHeight)
     }
     
     func newCategoryFormHeight() -> CGFloat {
