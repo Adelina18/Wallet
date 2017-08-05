@@ -31,6 +31,10 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         fetch()
         setupNewCategoryForm()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        fetchedResultsController = nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -173,6 +177,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                                                     managedObjectContext: context,
                                                     sectionNameKeyPath: nil,
                                                     cacheName: nil)
+        fetchedResultsController.delegate = self
         
         do {
             try fetchedResultsController.performFetch()
