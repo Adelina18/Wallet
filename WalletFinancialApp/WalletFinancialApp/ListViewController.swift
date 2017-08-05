@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 enum AddFormType {
     case AddTypeExpense
     case AddTypeIncome
 }
 
-class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var addIncome: UIButton!
     @IBOutlet weak var addExpense: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    var fetchedResultsController: NSFetchedResultsController<Expense>!
+
     var form: FormView? = nil
 
     override func viewDidLoad() {
@@ -27,7 +30,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         
+        fetch()
         setupFormView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        fetchedResultsController = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,20 +76,93 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: Table View
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //number on months
-        return 1
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as? ListTableViewCell {
-            cell.amount.text = "100"//test
-            return cell
-        } else {
-            return ListTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListTableViewCell
+        configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+        return cell
+    }
+    
+    func configureCell(cell: ListTableViewCell, indexPath: NSIndexPath) {
+        let expense = fetchedResultsController.object(at: indexPath as IndexPath)
+        cell.configureCell(expense: expense)
+    }
+    
+    
+    // MARK: core data
+    
+    func fetch() {
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
+        
+        //sort expenses by date
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                              managedObjectContext: context,
+                                                              sectionNameKeyPath: nil,
+                                                              cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            let error = error as NSError
+            print("Error: \(error)")
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
+            
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break
+            
+        case .update:
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRow(at: indexPath) as! ListTableViewCell
+                configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+            }
+            break
+            
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break
         }
     }
 }
@@ -92,6 +173,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension ListViewController: FormViewDelegate {
     
     func didCancel() {
+        form?.removeFromSuperview()
+    }
+    
+    func didSave(type: NSString, amount: NSString, title: NSString, details: NSString, category: NSNumber) {
+        let expense = Expense(context: context)
+        expense.amount = Double(amount as String)!
+        expense.title = title as String
+        expense.details = details as String
+        expense.date = NSDate()
+        expense.id = Int64(NSDate().timeIntervalSince1970)
+        expense.type = type as String
+        
+        //category - fetch category with id
+        
+        appDelegate.saveContext()
         form?.removeFromSuperview()
     }
     

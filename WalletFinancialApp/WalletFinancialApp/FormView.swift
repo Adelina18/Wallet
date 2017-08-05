@@ -11,6 +11,7 @@ import CoreData
 
 protocol FormViewDelegate: class {
     func didCancel()
+    func didSave(type: NSString, amount: NSString, title: NSString, details: NSString, category: NSNumber)
 }
 
 class FormView: UIView, UITextFieldDelegate {
@@ -29,9 +30,14 @@ class FormView: UIView, UITextFieldDelegate {
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dropdown: UIView!
     
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        saveObject()
-        self.delegate?.didCancel()
+    @IBAction func saveButtonPressed(_ sender: Any) {        
+        if (amountTextField.text?.characters.count)! > 0 && (titleTextField.text?.characters.count)! > 0 && selectedCategoryId > 0 {
+            self.delegate?.didSave(type: formTypeLabel.text! as NSString,
+                                    amount: amountTextField.text! as NSString,
+                                    title: titleTextField.text! as NSString,
+                                    details: detailsTextField.text! as NSString,
+                                    category: NSNumber(integerLiteral: selectedCategoryId))
+        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -155,10 +161,6 @@ class FormView: UIView, UITextFieldDelegate {
         selectedCategoryId = sender.tag
         categoryButton.setTitle(sender.titleLabel?.text, for: UIControlState.normal)
         dropdown.isHidden = true
-    }
-    
-    func saveObject() {
-        //save to core data
     }
     
     // MARK: textfields

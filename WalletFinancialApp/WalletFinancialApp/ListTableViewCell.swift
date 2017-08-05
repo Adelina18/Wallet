@@ -22,5 +22,17 @@ class ListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func configureCell(expense: Expense) {
+        itemType.text = expense.type == "Expense" ? "-" : "+"
+        amount.text = String(expense.amount)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM"
+        let string = formatter.string(from: Date())
+        date.text = string
+        
+        category.text = String(describing: expense.category)
+    }
 
 }

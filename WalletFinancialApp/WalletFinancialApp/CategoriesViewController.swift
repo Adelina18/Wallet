@@ -219,7 +219,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             break
             
         case .move:
-            //cell dragging
             if let indexPath = indexPath {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
