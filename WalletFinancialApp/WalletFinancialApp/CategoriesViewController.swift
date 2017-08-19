@@ -106,6 +106,10 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             category.id = Int64(NSDate().timeIntervalSince1970)
             category.name = nameTextField?.text
             
+            category.colorRed = Float(arc4random_uniform(200) + 50)
+            category.colorGreen = Float(arc4random_uniform(200) + 50)
+            category.colorBlue = Float(arc4random_uniform(200) + 50)
+            
             appDelegate.saveContext()
         }
         moveForm()

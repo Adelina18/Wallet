@@ -30,14 +30,24 @@ class FormView: UIView, UITextFieldDelegate {
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dropdown: UIView!
     
-    @IBAction func saveButtonPressed(_ sender: Any) {        
-        if (amountTextField.text?.characters.count)! > 0 && (titleTextField.text?.characters.count)! > 0 && selectedCategoryId > 0 {
-            self.delegate?.didSave(type: formTypeLabel.text! as NSString,
-                                    amount: amountTextField.text! as NSString,
-                                    title: titleTextField.text! as NSString,
-                                    details: detailsTextField.text! as NSString,
-                                    category: NSNumber(integerLiteral: selectedCategoryId))
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        if (titleTextField.text == "Income") {
+            if (amountTextField.text?.characters.count)! > 0 && (titleTextField.text?.characters.count)! > 0 && selectedCategoryId > 0 {
+                saveData()
+            }
+        } else {
+            if (amountTextField.text?.characters.count)! > 0 && (titleTextField.text?.characters.count)! > 0 {
+                saveData()
+            }
         }
+    }
+    
+    func saveData() {
+        self.delegate?.didSave(type: formTypeLabel.text! as NSString,
+                               amount: amountTextField.text! as NSString,
+                               title: titleTextField.text! as NSString,
+                               details: detailsTextField.text! as NSString,
+                               category: NSNumber(integerLiteral: selectedCategoryId))
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {

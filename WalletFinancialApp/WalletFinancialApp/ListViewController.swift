@@ -70,6 +70,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         if type == .AddTypeIncome {
             form?.setType(type: .AddTypeIncome)
         }
+        
+        form?.amountTextField.text = nil
+        form?.titleTextField.text = nil
+        form?.detailsTextField.text = nil
+        form?.categoryButton.setTitle("Category", for: UIControlState.normal)
     }
     
     
@@ -178,17 +183,46 @@ extension ListViewController: FormViewDelegate {
     
     func didSave(type: NSString, amount: NSString, title: NSString, details: NSString, category: NSNumber) {
         let expense = Expense(context: context)
-        expense.amount = Double(amount as String)!
+        expense.amount = Int16(amount as String)!
         expense.title = title as String
         expense.details = details as String
         expense.date = NSDate()
         expense.id = Int64(NSDate().timeIntervalSince1970)
         expense.type = type as String
         
-        //category - fetch category with id
+        //category - fetch category with id        
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        let predicate = NSPredicate.init(format: "id == %@", category)
+        request.entity = NSEntityDescription.entity(forEntityName: "Category", in: context)
+        request.predicate = predicate
+        
+        do {
+            let categories = try context.fetch(request)
+            if categories.count > 0 {
+                expense.category = categories[0]
+            }
+        } catch {
+            print("error while fetching category")
+        }
         
         appDelegate.saveContext()
+        calculateBallance(type: type, amount: Double(amount as String)!)
         form?.removeFromSuperview()
+    }
+    
+    func calculateBallance(type: NSString, amount: Double) {
+        var ballance = 0
+        if let oldBallance = UserDefaults.standard.value(forKey: "ballance") {
+            ballance = oldBallance as! Int
+        }
+                
+        if type == "Expense" {
+            ballance -= Int(amount)
+        } else {
+            ballance += Int(amount)
+        }
+        
+        UserDefaults.standard.set(ballance, forKey: "ballance")
     }
     
 }

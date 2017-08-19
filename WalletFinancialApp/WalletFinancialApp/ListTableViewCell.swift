@@ -24,15 +24,26 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func configureCell(expense: Expense) {
-        itemType.text = expense.type == "Expense" ? "-" : "+"
-        amount.text = String(expense.amount)
+        amount.text = "\(String(describing: String(expense.amount.formattedWithSeparator))) RON"
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM"
         let string = formatter.string(from: Date())
         date.text = string
         
-        category.text = String(describing: expense.category)
+        if expense.type == "Expense" {
+            itemType.text = "-"
+            category.text = expense.category?.name
+            
+            category.isHidden = false
+            category.backgroundColor = UIColor.init(colorLiteralRed: (expense.category?.colorRed)! / 255.0,
+                                                    green: (expense.category?.colorGreen)! / 255.0,
+                                                    blue: (expense.category?.colorBlue)! / 255.0,
+                                                    alpha: 0.8)
+        } else {
+            itemType.text = "+"
+            category.isHidden = true
+        }
     }
 
 }
