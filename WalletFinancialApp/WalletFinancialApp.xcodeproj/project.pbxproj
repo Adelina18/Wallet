@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		841A0C081F2AF44000548EFF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A0C071F2AF44000548EFF /* Configuration.swift */; };
+		8496173E1F4A23200075D332 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8496173C1F4A23200075D332 /* DetailsViewController.swift */; };
+		8496173F1F4A23200075D332 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8496173D1F4A23200075D332 /* DetailsViewController.xib */; };
 		8496FCD31F2BCEBE0086B2F5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8496FCD21F2BCEBE0086B2F5 /* CategoryTableViewCell.swift */; };
 		8496FCD51F2BCEDE0086B2F5 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8496FCD41F2BCEDE0086B2F5 /* CategoriesViewController.swift */; };
 		84EFC7991F206E1C00860A6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFC7981F206E1C00860A6F /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		841A0C071F2AF44000548EFF /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		8496173C1F4A23200075D332 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		8496173D1F4A23200075D332 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		8496FCD21F2BCEBE0086B2F5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		8496FCD41F2BCEDE0086B2F5 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		84EFC7951F206E1C00860A6F /* WalletFinancialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalletFinancialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +141,7 @@
 				8496FCE21F2BFE940086B2F5 /* CoreData */,
 				8496FCD11F2BCC3F0086B2F5 /* Cells */,
 				84EFC7D91F241C0700860A6F /* Storyboards */,
-				84EFC7D61F24186B00860A6F /* View */,
+				84EFC7D61F24186B00860A6F /* Views */,
 				84EFC7CD1F218F9400860A6F /* ViewControllers */,
 				84EFC7981F206E1C00860A6F /* AppDelegate.swift */,
 				84EFC7A21F206E1C00860A6F /* Assets.xcassets */,
@@ -173,17 +177,19 @@
 				84EFC7D01F23F0A600860A6F /* DashboardViewController.swift */,
 				84EFC7D41F24142000860A6F /* ListViewController.swift */,
 				8496FCD41F2BCEDE0086B2F5 /* CategoriesViewController.swift */,
+				8496173C1F4A23200075D332 /* DetailsViewController.swift */,
+				8496173D1F4A23200075D332 /* DetailsViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		84EFC7D61F24186B00860A6F /* View */ = {
+		84EFC7D61F24186B00860A6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				84EFC7DE1F243CD700860A6F /* FormView.xib */,
 				84EFC7E01F243DC200860A6F /* FormView.swift */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		84EFC7D91F241C0700860A6F /* Storyboards */ = {
@@ -307,6 +313,7 @@
 			files = (
 				84EFC7DF1F243CD700860A6F /* FormView.xib in Resources */,
 				84EFC7A61F206E1C00860A6F /* LaunchScreen.storyboard in Resources */,
+				8496173F1F4A23200075D332 /* DetailsViewController.xib in Resources */,
 				84EFC7A31F206E1C00860A6F /* Assets.xcassets in Resources */,
 				84EFC79E1F206E1C00860A6F /* Main.storyboard in Resources */,
 			);
@@ -344,6 +351,7 @@
 				84EFC7CF1F21975500860A6F /* MainViewController.swift in Sources */,
 				84EFC7D31F24031700860A6F /* ListTableViewCell.swift in Sources */,
 				84EFC7D51F24142000860A6F /* ListViewController.swift in Sources */,
+				8496173E1F4A23200075D332 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

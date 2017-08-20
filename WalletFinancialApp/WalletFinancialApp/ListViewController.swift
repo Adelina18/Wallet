@@ -34,8 +34,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupFormView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
-        fetchedResultsController = nil
+//        fetchedResultsController = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +101,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListTableViewCell
+        cell.selectionStyle = .none
         configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
         return cell
     }
@@ -104,6 +109,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func configureCell(cell: ListTableViewCell, indexPath: NSIndexPath) {
         let expense = fetchedResultsController.object(at: indexPath as IndexPath)
         cell.configureCell(expense: expense)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsViewController = DetailsViewController()
+        
+        let expense = fetchedResultsController.object(at: indexPath as IndexPath)
+        detailsViewController.setupExpense(expense: expense)
+        
+        self.present(detailsViewController, animated: true, completion: nil)
     }
     
     

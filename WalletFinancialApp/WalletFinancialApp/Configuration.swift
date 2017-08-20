@@ -20,6 +20,8 @@ class Configuration: NSObject {
     static let kBorderColor = UIColor.white
     static let kTextColor = UIColor.white
     static let kBackgroundColor = UIColor.black
+    static let kYellowColor = UIColor.init(red: 255/255.0, green: 209/255.0, blue: 99/255.0, alpha: 1.0)
+    static let kGreenColor = UIColor.init(red: 80/255.0, green: 191/255.0, blue: 36/255.0, alpha: 1.0)
     
     static let sharedInstance = Configuration()
     
@@ -57,6 +59,14 @@ class Configuration: NSObject {
     
     func backgroundColor() -> UIColor {
         return Configuration.kBackgroundColor
+    }
+    
+    func yellowColor() -> UIColor {
+        return Configuration.kYellowColor
+    }
+    
+    func greenColor() -> UIColor {
+        return Configuration.kGreenColor
     }
 
 }
