@@ -71,6 +71,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         nameTextField?.attributedPlaceholder = NSAttributedString(string: "Category",
                                                              attributes: [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7)])
         nameTextField?.backgroundColor = Configuration.sharedInstance.backgroundColor()
+        nameTextField?.autocapitalizationType = .sentences
         nameTextField?.textColor = Configuration.sharedInstance.textColor()
         nameTextField?.delegate = self
         
@@ -122,13 +123,13 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         if formMovedUp {
             formMovedUp = false
             form?.frame = CGRect.init(x: (frame?.origin.x)!,
-                                      y: (frame?.origin.y)! - 200,
+                                      y: (frame?.origin.y)! - 150,
                                       width: (frame?.size.width)!,
                                       height: (frame?.size.height)!)
         } else {
             formMovedUp = true
             form?.frame = CGRect.init(x: (frame?.origin.x)!,
-                                      y: (frame?.origin.y)! + 200,
+                                      y: (frame?.origin.y)! + 150,
                                       width: (frame?.size.width)!,
                                       height: (frame?.size.height)!)
         }
@@ -248,7 +249,5 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         textField.resignFirstResponder()
         return true
     }
-
-    
 
 }

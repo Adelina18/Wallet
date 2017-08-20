@@ -145,6 +145,9 @@ class FormView: UIView, UITextFieldDelegate {
         titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.inset(), 0, 0);
         detailsTextField.layer.sublayerTransform = CATransform3DMakeTranslation(Configuration.sharedInstance.inset(), 0, 0);
         
+        titleTextField.autocapitalizationType = .sentences
+        detailsTextField.autocapitalizationType = .sentences
+        
         amountTextField.attributedPlaceholder = NSAttributedString(string: "Amount",
                                                                    attributes: [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7)])
         titleTextField.attributedPlaceholder = NSAttributedString(string: "Title",
@@ -173,12 +176,22 @@ class FormView: UIView, UITextFieldDelegate {
         dropdown.isHidden = true
     }
     
+    
     // MARK: textfields
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == amountTextField {
+            textField.keyboardType = UIKeyboardType.numberPad
+        } else {
+            textField.keyboardType = UIKeyboardType.alphabet
+        }
+        return true
+    }
     
 
 }
